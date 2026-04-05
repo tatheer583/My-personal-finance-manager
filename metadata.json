@@ -1,0 +1,5 @@
+{
+  "name": "Personal Finance Manager",
+  "description": "A dark-themed personal finance application to track income, expenses, and view financial summaries with data visualization.",
+  "requestFramePermissions": []
+}
