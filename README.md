@@ -131,7 +131,7 @@ npm run build
 2. Your transaction history downloads as `transactions.csv`
 3. Open in Excel, Google Sheets, or any spreadsheet application
 
----
+--
 
 ## 💾 Data Storage
 
