@@ -24,9 +24,9 @@ A modern, responsive web application for tracking personal income and expenses. 
 - 🔍 **Smart Filtering** - Filter by transaction type, date range, and keyword search
 - 👥 **Sender Management** - Add custom income sources beyond predefined family members
 - 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
-- 🎨 **Modern UI** - Clean, intuitive interface with smooth animations
+- 🎨 **Modern UI** - Clean, intuitive interface with smooth animations.
 
----
+
 
 ## 🏗️ Project Structure
 
@@ -64,9 +64,9 @@ personal-finance-manager/
 | **Recharts** | 3.5.1 | Data visualization |
 | **Lucide React** | 0.561.0 | Icon components |
 
----
 
-## 🚀 Getting Started
+
+##  Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
