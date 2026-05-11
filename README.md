@@ -30,7 +30,7 @@ A modern, responsive web application for tracking personal income and expenses. 
 
 ## 🏗️ Project Structure
 
-```
+
 personal-finance-manager/
 ├── src/
 │   ├── App.tsx                 # Root component & state management
