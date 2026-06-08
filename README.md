@@ -5,9 +5,7 @@ A modern, responsive web application for tracking personal income and expenses. 
 ![React](https://img.shields.io/badge/React-19.2-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?logo=typescript)
 ![Vite](https://img.shields.io/badge/Vite-6.2-purple?logo=vite)
-![License](https://img.shields.io/badge/License-MIT-green)
-
----
+![License](https://img.shields.io/badge/License-MIT-green
 
 ## 🎯 Features
 
