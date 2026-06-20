@@ -156,7 +156,7 @@ Sender {
 }
 ```
 
----
+
 
 ## 🎨 Customization
 
@@ -169,7 +169,7 @@ export const PREDEFINED_SENDERS = [
   "Ameen Bhai",
   "Tanveer Bhai"
 ];
-```
+
 
 ### Changing Currency
 Edit [`constants.ts`](constants.ts):
@@ -195,7 +195,7 @@ Modify color classes in component files (uses Tailwind CSS):
 - ✏️ Edit/delete existing transactions
 - 📱 Native mobile app
 
----
+
 
 ## 🐛 Known Limitations
 
@@ -239,4 +239,4 @@ Created with ❤️ for personal finance management.
 
 ---
 
-**Last Updated:** April 6, 2026
+**last updated 20 june 2026
