@@ -1,242 +1,165 @@
-# 💰 Personal Finance Manager
+# Personal Finance Manager
 
-A modern, responsive web application for tracking personal income and expenses. Manage your finances with ease using an intuitive interface, real-time analytics, and persistent data storage.
+A fast, private, local-first web app for tracking income, expenses, budgets and savings. It runs entirely in the browser: there is no account, no server and no tracking, and your data never leaves your device unless you export it.
 
-![React](https://img.shields.io/badge/React-19.2-blue?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-6.2-purple?logo=vite)
-![License](https://img.shields.io/badge/License-MIT-green
+![React](https://img.shields.io/badge/React-19-149eca?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8-646cff?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8?logo=tailwindcss&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-35_passing-22c55e)
 
-## 🎯 Features
+## Features
 
-### Core Functionality
-- ✅ **Track Income** - Record money received from family members or custom sources
-- ✅ **Track Expenses** - Log expenses by category with descriptions
-- ✅ **Financial Dashboard** - View total income, expenses, balance, and trends at a glance
-- ✅ **Transaction History** - Complete view of all transactions with advanced filtering
-- ✅ **Data Persistence** - Automatic save to browser's localStorage
-- ✅ **CSV Export** - Export transaction data for external analysis
+- **Dashboard** — current balance, total income and expenses, savings rate, monthly budget progress, income-vs-expense trend chart, spending breakdown by category, recent transactions and budget alerts.
+- **Transactions** — add, edit and delete income or expenses; search notes and categories; filter by type, category or a date preset/custom range; sort by date or amount; paginated history (25 per page).
+- **Budgets** — an overall monthly ceiling, an optional daily spending limit and per-category budgets with live progress and over-limit warnings.
+- **Categories** — rename the built-in income sources and expense categories, add your own, pick colours, and safely delete categories without losing their transactions (they become “Uncategorised”).
+- **Settings** — currency (PKR, USD, EUR, GBP, SAR, AED, INR, BDT), number/date locale, light/dark/system theme and a savings goal.
+- **Backups** — download a complete JSON backup and restore it later; export transactions as spreadsheet-ready CSV.
+- **Responsive interface** — desktop sidebar, mobile bottom navigation, keyboard-friendly controls, reduced-motion support and accessible labels.
+- **Offline-friendly** — static assets are bundled locally; no CDN or runtime API is required.
+- **Data migration** — data from the original version of the app (stored in `localStorage`) is imported automatically on first launch and mapped onto the new category model.
 
-### Advanced Features
-- 📊 **Visual Analytics** - Bar charts comparing income vs. expenses
-- 🔍 **Smart Filtering** - Filter by transaction type, date range, and keyword search
-- 👥 **Sender Management** - Add custom income sources beyond predefined family members
-- 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
-- 🎨 **Modern UI** - Clean, intuitive interface with smooth animations.
+## Tech stack
 
+| Layer | Tools |
+| --- | --- |
+| UI | React 19, React Router 7, Tailwind CSS 4, Lucide icons |
+| Charts | Recharts 3 |
+| Language | TypeScript 5.9 (strict) |
+| Build | Vite 8 |
+| Validation | Zod 4 (backup files), hand-written record sanitisation (storage) |
+| Tests | Vitest, Testing Library, jest-dom |
+| Storage | IndexedDB, with JSON export/import |
 
+## Getting started
 
-## 🏗️ Project Structure
+**Prerequisites:** Node.js 22 or newer and npm.
 
-
-personal-finance-manager/
-├── src/
-│   ├── App.tsx                 # Root component & state management
-│   ├── types.ts                # TypeScript type definitions
-│   ├── constants.ts            # App constants (senders, currency)
-│   ├── index.tsx               # React entry point
-│   ├── index.css               # Global styles & Tailwind
-│   └── components/
-│       ├── Dashboard.tsx       # Landing view with summary & charts
-│       ├── IncomeForm.tsx      # Form for recording income
-│       ├── ExpenseForm.tsx     # Form for recording expenses
-│       ├── TransactionsList.tsx # Transaction history & filtering
-│       ├── ManageSenders.tsx   # Manage income sources
-│       └── Sidebar.tsx         # Navigation menu
-├── package.json
-├── vite.config.ts
-├── tsconfig.json
-└── README.md
+```bash
+git clone https://github.com/tatheer583/My-personal-finance-manager.git
+cd My-personal-finance-manager
+npm install
+npm run dev
 ```
 
----
+The dev server runs at <http://localhost:3000>.
 
-## 🛠️ Tech Stack
+### Scripts
 
-| Technology | Version | Purpose |
-|-----------|---------|---------|
-| **React** | 19.2.3 | UI library |
-| **TypeScript** | 5.8.2 | Type safety |
-| **Vite** | 6.2.0 | Build tool & dev server |
-| **Tailwind CSS** | Latest | Utility-first styling |
-| **Recharts** | 3.5.1 | Data visualization |
-| **Lucide React** | 0.561.0 | Icon components |
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the Vite dev server with hot reload |
+| `npm run build` | Type-check the project and create a production build in `dist/` |
+| `npm run preview` | Serve the production build at <http://localhost:4173> |
+| `npm run typecheck` | Run the TypeScript compiler without emitting files |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run the unit test suite once |
+| `npm run test:watch` | Run unit tests in watch mode |
+| `npm run deploy:pages` | Build and publish `dist/` to the `gh-pages` branch (fallback deployment) |
 
+## How to use it
 
+1. Choose **New transaction**, pick Income or Expense, enter an amount, date and category, and optionally add a note.
+2. Open **Transactions** to search, filter, edit or delete entries.
+3. Use **Budgets** to set a monthly ceiling, a daily limit or category budgets; progress updates from the current month’s expenses.
+4. In **Settings**, adjust currency, locale and theme, manage categories, and download a backup before changing devices.
+5. To move data, use **Download backup (JSON)** on the old device and **Restore from backup** on the new one.
 
-##  Getting Started
+## Data and privacy
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn package manager
+- Everything is stored in **IndexedDB** in your browser, under the database `personal-finance-manager`.
+- The app makes **no network requests** for your data. There is no login, analytics or telemetry.
+- The theme preference is mirrored to `localStorage` (`pfm.theme`) so the correct theme is applied before first paint.
+- Clearing your browser’s site data deletes the app’s records. Keep regular JSON backups.
+- JSON backups are validated with Zod on import; malformed individual records are skipped with a warning instead of rejecting the whole file.
+- On first launch, data saved by version 1 is migrated from the legacy `transactions` and `senders` keys. Legacy entries are matched to built-in categories by name (for example “groceries” → “Food & meals”).
 
-### Installation
+### Backup format
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd personal-finance-manager
-   ```
+```json
+{
+  "app": "personal-finance-manager",
+  "version": 2,
+  "exportedAt": "2026-10-20T12:00:00.000Z",
+  "state": {
+    "schemaVersion": 2,
+    "transactions": [],
+    "categories": [],
+    "budgets": [],
+    "settings": {}
+  }
+}
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+## Project structure
 
-3. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-   The app will open at `http://localhost:3000`
+```text
+.
+├── .github/workflows/deploy.yml   # CI: typecheck, lint, test, build, deploy Pages
+├── public/favicon.svg
+├── scripts/
+│   ├── deploy-gh-pages.mjs        # Fallback branch-based deployment
+│   ├── e2e-test.mjs               # Browser interaction checks
+│   └── smoke-test.mjs             # Route walkthrough and screenshots
+├── src/
+│   ├── components/
+│   │   ├── charts/                # Trend and category charts
+│   │   ├── dashboard/             # Stat cards
+│   │   ├── layout/                # Shell, sidebar, mobile nav, theme toggle
+│   │   ├── transactions/          # Form and filters
+│   │   └── ui/                    # Buttons, cards, fields, modals
+│   ├── context/                   # Finance, theme and toast providers
+│   ├── lib/                       # Storage, stats, CSV, backup, formatting
+│   ├── pages/                     # Dashboard, transactions, budgets, settings
+│   ├── App.tsx                    # Routes and providers
+│   ├── constants.ts               # Schema version, defaults, currencies
+│   └── types.ts                   # Domain model
+├── index.html
+├── vite.config.ts                 # Base path, chunking, SPA 404 fallback
+└── vitest.config.ts
+```
 
-### Build for Production
+## Deployment
+
+The included workflow (`.github/workflows/deploy.yml`) runs type-checking, linting, unit tests and a production build, then publishes `dist/` to GitHub Pages.
+
+1. Push the repository to GitHub.
+2. Open **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
+3. Push to `master` (or `main`), or run the **Deploy to GitHub Pages** workflow manually.
+
+The Vite base path is derived from the `GITHUB_REPOSITORY` environment variable, so the site works from `https://<user>.github.io/<repo>/` without editing configuration. The build also emits `404.html` as an SPA fallback, so deep links such as `/transactions` resolve correctly on Pages.
+
+If the repository is configured to deploy from a branch instead, run:
+
+```bash
+npm run deploy:pages
+```
+
+This builds with the correct base path and pushes the output to the `gh-pages` branch.
+
+## Testing
+
+```bash
+npm test          # 35 unit tests
+npm run typecheck
+npm run lint
+```
+
+Unit tests cover storage migration and per-record sanitisation, legacy imports, statistics, formatting, CSV generation and backup validation.
+
+Browser checks are optional and use `puppeteer-core` with an installed Chrome/Chromium:
+
 ```bash
 npm run build
+npm run preview
+# in another terminal:
+node scripts/e2e-test.mjs
+node scripts/smoke-test.mjs
 ```
 
----
+Set `BASE_URL` to target another origin and `CHROME_PATH` to point at Chrome if it is not in the default location. Screenshots from the smoke test are written to `.screenshots/` (ignored by Git).
 
-## 📖 Usage Guide
+## Browser support
 
-### Adding Income
-1. Click **"Add Income"** in the sidebar
-2. Select the income source from the dropdown (Father, Shakir Bhai, etc.)
-3. Enter the amount received
-4. (Optional) Add a note
-5. Click **"Record Income"**
-
-### Adding Expenses
-1. Click **"Add Expense"** in the sidebar
-2. Enter the expense category (e.g., "Groceries", "Utilities")
-3. Enter the amount spent
-4. Click **"Record Expense"**
-
-### Viewing Transactions
-1. Click **"View Transactions"** to see complete history
-2. Use filters to narrow results:
-   - **Type:** Filter by Income or Expense
-   - **Date Range:** Specify start and end dates
-   - **Search:** Find by category/sender name
-
-### Managing Income Sources
-1. Click **"Manage Senders"** in the sidebar
-2. View predefined senders (locked, cannot be deleted)
-3. Add new custom sender names
-4. Delete custom senders as needed
-
-### Exporting Data
-1. Click the **"Export CSV"** button in the sidebar
-2. Your transaction history downloads as `transactions.csv`
-3. Open in Excel, Google Sheets, or any spreadsheet application
-
---
-
-## 💾 Data Storage
-
-- **Location:** Browser's localStorage
-- **Format:** JSON serialized transactions and senders arrays
-- **Persistence:** Data survives page refreshes and browser restarts
-- **Note:** Data is device-specific; clearing browser data will delete all records
-
-### Data Schema
-
-```typescript
-Transaction {
-  id: number              // Unique timestamp identifier
-  type: 'INCOME' | 'EXPENSE'
-  amount: number          // Transaction amount
-  categoryOrSender: string // Income sender or expense category
-  date: string            // ISO 8601 datetime
-  note?: string           // Optional notes (income only)
-}
-
-Sender {
-  name: string            // Income source name
-  isDefault: boolean      // Cannot delete default senders
-}
-```
-
-
-
-## 🎨 Customization
-
-### Modifying Default Income Sources
-Edit [`constants.ts`](constants.ts):
-```typescript
-export const PREDEFINED_SENDERS = [
-  "Father (Abu)",
-  "Shakir Bhai",
-  "Ameen Bhai",
-  "Tanveer Bhai"
-];
-
-
-### Changing Currency
-Edit [`constants.ts`](constants.ts):
-```typescript
-export const CURRENCY = "PKR"; // Change to USD, EUR, etc.
-```
-
-### Theming
-Modify color classes in component files (uses Tailwind CSS):
-- Primary: `slate` colors
-- Accents: `emerald` (income), `red` (expense)
-
----
-
-## 🔄 Roadmap
-
-### Planned Features
-- 🔐 User authentication & multi-user support
-- 📅 Recurring transaction templates
-- 💾 Cloud backup & sync
-- 📈 Advanced analytics & reports
-- 🎯 Budget planning & spending alerts
-- ✏️ Edit/delete existing transactions
-- 📱 Native mobile app
-
-
-
-## 🐛 Known Limitations
-
-- No transaction editing or deletion (planned for v2)
-- Data stored locally only (no cloud backup)
-- No multi-user support
-- Limited to browser storage size
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Here's how to help:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📞 Support
-
-For issues, questions, or suggestions:
-- Open an issue on GitHub
-- Check existing documentation
-- Review the [usage guide](#-usage-guide) above
-
----
-
-## 👨‍💻 Author
-
-Created with ❤️ for personal finance management.
-
----
-
-**last updated 20 june 2026
+The app targets evergreen browsers with IndexedDB and ES2022 support: current Chrome, Edge, Firefox and Safari. It is a static single-page app and can be hosted on GitHub Pages, Netlify, Vercel or any static file server with SPA rewrites.
